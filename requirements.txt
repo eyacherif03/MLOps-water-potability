@@ -1,8 +1,8 @@
-pandas
-numpy
-scikit-learn
-xgboost
-mlflow
-dagshub
-matplotlib
-seaborn
+pandas==2.3.3
+numpy==2.4.2
+scikit-learn==1.8.0
+xgboost==3.2.0
+mlflow==3.9.0
+dagshub==0.7.0
+matplotlib==3.10.8
+seaborn==0.13.2 
