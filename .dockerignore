@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Données brutes (montées en volume dans Jenkins)
+dataset/raw/
+
+# MLflow local
+mlruns/
+
+# CI/CD et infra
+Jenkinsfile
+infra/
+k8s/
+reports/
+
+# IDE
+.vscode/
+.idea/
