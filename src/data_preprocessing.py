@@ -4,10 +4,7 @@ import os
 import joblib
 
 def preprocess():
-    workspace_path = os.getenv("WORKSPACE", "/app/workspace")
-    DATA_PATH = os.path.join(workspace_path, "dataset/raw/water_potability.csv")
-    print(f"Files in workspace/dataset/raw: {os.listdir(os.path.join(workspace_path, 'dataset/raw'))}")
-    
+    DATA_PATH = "/app/dataset/raw/water_potability.csv"   
     data = pd.read_csv(DATA_PATH)
 
     train_data, test_data = train_test_split(
@@ -22,7 +19,7 @@ def preprocess():
     train_data = train_data.fillna(median_values)
     test_data = test_data.fillna(median_values)
 
-    os.makedirs("dataset/processed", exist_ok=True)
+    os.makedirs("/app/dataset/processed", exist_ok=True)
 
     train_data.to_csv("/app/dataset/processed/train.csv", index=False)
     test_data.to_csv("/app/dataset/processed/test.csv", index=False)
