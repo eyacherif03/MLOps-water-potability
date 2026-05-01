@@ -46,7 +46,7 @@ def train():
 
                 # Sauvegarde modèle
                 mlflow.log_param("model_name", name)
-                mlflow.sklearn.log_model(model, artifact_path="model")
+                mlflow.sklearn.log_model(model, name="model")
 
     print("Training + Evaluation done")
 
