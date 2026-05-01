@@ -16,7 +16,7 @@ mlflow.set_experiment(EXPERIMENT_NAME)
 
 def evaluate():
     # ── Charger les données de test ──────────────────────────────────────────
-    test_data = pd.read_csv("dataset/processed/test.csv")
+    test_data = pd.read_csv("/app/dataset/processed/test.csv")
     X_test    = test_data.drop(columns=["Potability"])
     y_test    = test_data["Potability"]
 

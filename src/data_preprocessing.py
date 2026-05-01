@@ -22,11 +22,11 @@ def preprocess():
 
     os.makedirs("dataset/processed", exist_ok=True)
 
-    train_data.to_csv("dataset/processed/train.csv", index=False)
-    test_data.to_csv("dataset/processed/test.csv", index=False)
+    train_data.to_csv("/app/dataset/processed/train.csv", index=False)
+    test_data.to_csv("/app/dataset/processed/test.csv", index=False)
 
     # sauvegarde propre (pour inference)
-    joblib.dump(median_values, "dataset/processed/median_values.pkl")
+    joblib.dump(median_values, "/app/dataset/processed/median_values.pkl")
 
     print("Preprocessing done")
 

@@ -14,7 +14,7 @@ dagshub.init(repo_owner='eyacherif03', repo_name='Water-potability', mlflow=True
 mlflow.set_experiment("Water_Potability_Experiment")
 
 def train():
-    train_data = pd.read_csv("dataset/processed/train.csv")
+    train_data = pd.read_csv("/app/dataset/processed/train.csv")
 
     X_train = train_data.drop(columns=["Potability"])
     y_train = train_data["Potability"]
@@ -28,7 +28,7 @@ def train():
         "xgb": XGBClassifier()
     }
 
-    with mlflow.start_run(run_name="training_pipeline"):
+    with mlflow.start_run(run_name="training_pipeline") as parent:
         for name, model in models.items():
 
             with mlflow.start_run(run_name=name, nested=True):
