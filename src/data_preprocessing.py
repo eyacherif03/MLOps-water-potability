@@ -4,7 +4,7 @@ import os
 import joblib
 
 def preprocess():
-    DATA_PATH = os.getenv("DATA_PATH", "dataset/raw/water_potability.csv")
+    DATA_PATH = os.getenv("DATA_PATH", "/app/dataset/raw/water_potability.csv")
 
     data = pd.read_csv(DATA_PATH)
 
