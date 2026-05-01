@@ -9,8 +9,10 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
 import os
+token = os.getenv("DAGSHUB_TOKEN")
 
-dagshub.init(repo_owner='eyacherif03', repo_name='Water-potability', mlflow=True, token=os.getenv("DAGSHUB_TOKEN"))
+
+dagshub.init(repo_owner='eyacherif03', repo_name='Water-potability', mlflow=True, token=token)
 mlflow.set_experiment("Water_Potability_Experiment")
 
 def train():
