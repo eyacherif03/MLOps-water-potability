@@ -11,9 +11,6 @@ venv/
 # Logs
 *.log
 
-# Données brutes (montées en volume dans Jenkins)
-dataset/raw/
-
 # MLflow local
 mlruns/
 
@@ -21,7 +18,7 @@ mlruns/
 Jenkinsfile
 infra/
 k8s/
-reports/
+
 
 # IDE
 .vscode/
