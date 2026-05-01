@@ -4,8 +4,10 @@ import os
 import joblib
 
 def preprocess():
-    DATA_PATH = os.getenv("DATA_PATH", "/app/dataset/raw/water_potability.csv")
-
+    workspace_path = os.getenv("WORKSPACE", "/app/workspace")
+    DATA_PATH = os.path.join(workspace_path, "dataset/raw/water_potability.csv")
+    print(f"Files in workspace/dataset/raw: {os.listdir(os.path.join(workspace_path, 'dataset/raw'))}")
+    
     data = pd.read_csv(DATA_PATH)
 
     train_data, test_data = train_test_split(
