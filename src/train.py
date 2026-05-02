@@ -10,8 +10,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-dagshub.init(repo_owner='eyacherif03', repo_name='Water-potability', mlflow=True)
+dagshub.init(repo_owner='eyacherif03', repo_name='MLOps-water-potability', mlflow=True)
+mlflow.set_tracking_uri("https://dagshub.com/eyacherif03/MLOps-water-potability.mlflow")
 mlflow.set_experiment("Water_Potability_Experiment")
+
 
 def train():
     train_data = pd.read_csv("/app/dataset/processed/train.csv")
@@ -46,9 +48,7 @@ def train():
 
                 # Sauvegarde modèle
                 mlflow.log_param("model_name", name)
-                mlflow.sklearn.log_model(model, name="model")
-
-    print("Training + Evaluation done")
+                mlflow.sklearn.log_model(model, artifact_path="model")
 
 if __name__ == "__main__":
     train()
