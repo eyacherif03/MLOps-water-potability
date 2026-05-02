@@ -12,7 +12,8 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 dagshub.init(repo_owner='eyacherif03', repo_name='MLOps-water-potability', mlflow=True)
 mlflow.set_tracking_uri("https://dagshub.com/eyacherif03/MLOps-water-potability.mlflow")
-mlflow.set_experiment("Water_Potability_Experiment")
+EXPERIMENT_NAME = "Water_Potability_Experiment"
+mlflow.set_experiment(EXPERIMENT_NAME)
 
 
 def train():
