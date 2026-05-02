@@ -39,17 +39,24 @@ def train():
             with mlflow.start_run(run_name=name, nested=True):
                 # Entraînement
                 model.fit(X_train, y_train)
-
-                # Évaluation
                 y_pred = model.predict(X_test)
+
+                # Métriques
                 mlflow.log_metric("accuracy",  accuracy_score(y_test, y_pred))
                 mlflow.log_metric("precision", precision_score(y_test, y_pred))
                 mlflow.log_metric("recall",    recall_score(y_test, y_pred))
                 mlflow.log_metric("f1_score",  f1_score(y_test, y_pred))
+                mlflow.log_param("model_name", name)
+
+                # Sauvegarde prédictions comme artefact
+                pred_df   = pd.DataFrame({"y_true": y_test.values, "y_pred": y_pred})
+                pred_path = f"/tmp/{name}_output.csv"
+                pred_df.to_csv(pred_path, index=False)
+                mlflow.log_artifact(pred_path, artifact_path="outputs")
 
                 # Sauvegarde modèle
-                mlflow.log_param("model_name", name)
                 mlflow.sklearn.log_model(model, artifact_path="model")
+
 
 if __name__ == "__main__":
     train()
